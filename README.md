@@ -50,6 +50,9 @@ The Ionic documentation currently indicates that versions v5.x.x are not support
 <a name="features"></a>
 ## Features
 
+This guide describes a proposed list of features and a user interface based on those features.
+This is only a suggestion. You can support other features and make a different user interface.
+
 The proposed app should allow citizens to do the following:
 
 * add new issues:
