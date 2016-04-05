@@ -71,10 +71,21 @@ angular.module('citizen-engagement', ['ionic', 'citizen-engagement.auth', 'citiz
     })
 
   .state('tab.issues', {
+      cache: false,
       url: '/issues',
       views: {
         'tab-issues': {
           templateUrl: 'templates/tab-issues.html',
+          resolve: {
+            issuesInRadius: function($http, apiUrl, AuthService){
+              return $http({
+                method: 'GET',
+                url: apiUrl + '/issues'
+              }).success(function(issues) {
+                return issues;
+              });
+            }
+          },
           controller: 'IssueCtrl'
         }
       }
