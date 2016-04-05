@@ -56,7 +56,7 @@ function saveConfig(environment) {
   var config = require('./config/' + environment + '.json');
 
   // Use `constants.js` as the source.
-  gulp.src(['www/js/constants.js'])
+  gulp.src(['constants.js'])
 
     // Replace all occurrences of @apiUrl@.
     .pipe(replace(/@apiUrl@/g, config.apiUrl))
