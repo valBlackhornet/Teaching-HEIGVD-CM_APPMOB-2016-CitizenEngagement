@@ -36,7 +36,7 @@ angular.module('citizen-engagement.auth', ['angular-storage'])
     return service;
   })
 
-   .controller('LoginCtrl', function(AuthService, $http, $ionicHistory, $ionicLoading, $scope, $state) {
+   .controller('LoginCtrl', function(apiUrl, AuthService, $http, $ionicHistory, $ionicLoading, $scope, $state) {
 
     // The $ionicView.beforeEnter event happens every time the screen is displayed.
     $scope.$on('$ionicView.beforeEnter', function() {
@@ -60,7 +60,7 @@ angular.module('citizen-engagement.auth', ['angular-storage'])
       // Make the request to retrieve or create the user.
       $http({
         method: 'POST',
-        url: 'http://localhost:8100/api-proxy/users/logister',
+        url: apiUrl + '/users/logister',
         data: $scope.user
       }).success(function(user) {
 
