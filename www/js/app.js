@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('citizen-engagement', ['ionic', 'citizen-engagement.auth', 'citizen-engagement.constants'])
+angular.module('citizen-engagement', ['ionic', 'citizen-engagement.auth', 'citizen-engagement.constants', 'citizen-engagement.issue'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -40,7 +40,12 @@ angular.module('citizen-engagement', ['ionic', 'citizen-engagement.auth', 'citiz
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+
+  //Delete the previous title
+  $ionicConfigProvider.backButton.previousTitleText(false);
+  //Delete the default text
+  $ionicConfigProvider.backButton.text('');
 
   // Ionic uses AngularUI Router which uses the concept of states
   // Learn more here: https://github.com/angular-ui/ui-router
@@ -70,6 +75,26 @@ angular.module('citizen-engagement', ['ionic', 'citizen-engagement.auth', 'citiz
       views: {
         'tab-issues': {
           templateUrl: 'templates/tab-issues.html',
+          controller: 'IssueCtrl'
+        }
+      }
+    })
+
+    .state('tab.issues/issuesList', {
+      url: '/issue/list',
+      views: {  
+        'tab-issues' : {
+          templateUrl: 'templates/issueList.html',
+          controller: ''
+        }
+      }
+    })
+
+    .state('tab.issues/newIssue', {
+      url: '/issue/list',
+      views: {  
+        'tab-issues' : {
+          templateUrl: 'templates/newIssue.html',
           controller: ''
         }
       }
