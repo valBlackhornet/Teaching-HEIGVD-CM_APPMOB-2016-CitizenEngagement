@@ -1,14 +1,34 @@
-<ion-view view-title="New Issue">
+<ion-view view-title="List of Issues">
 <ion-content>
-<p>Hello! This is the issue creation screen.</p>
-<button class="button button-block button-positive">
-	Block Button
-</button>
-<button class="button button-block button-positive">
-	Block Button
-</button>
-<button class="button button-block button-positive">
-	Block Button
-</button>
+
+<div class="list">
+
+    <a class="item item-thumbnail-left" href="#">
+      <img src="../img/lampadaire.jpg"> <!--{imageUrl}-->
+      <h2 balanced>Lampadaire cassé {issueType/name}</h2> <!--{issueType/name}-->
+      <p balanced>Résolu {state}</p> <!--{state}-->
+      <p>Description {description}</p> <!--{description}-->
+    </a>
+
+    <a class="item item-thumbnail-left" href="#">
+      <img src="../img/graffiti.jpg">
+      <h2>Graffiti mal placé</h2>
+      <p>À résoudre</p>
+      <p>LongLat</p>
+    </a>
+
+    <a class="item item-thumbnail-left" href="#">
+      <img src="../img/trottoir.jpg">
+      <h2>Trottoir abimé</h2>
+      <p>Résolu</p>
+      <p>LongLat</p>
+    </a>
+
+
+</div>
+
+
+
+
 </ion-content>
 </ion-view>
