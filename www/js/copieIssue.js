@@ -1,5 +1,5 @@
 angular.module('citizen-engagement.issue', [])  
-    .controller('IssueCtrl', function($scope, $state, issuesInRadius) {
+    .controller('IssueCtrl', function($scope, $state, issuesInRadius, AuthService) {
         alert(issuesInRadius.data);
         function initialize () {
             var myLatlng = new google.maps.LatLng(0, 0);
