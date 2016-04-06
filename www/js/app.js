@@ -3,7 +3,12 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('citizen-engagement', ['ionic', 'citizen-engagement.auth', 'citizen-engagement.constants', 'citizen-engagement.issue','citizen-engagement.user'])
+angular.module('citizen-engagement', ['ionic', 
+  'citizen-engagement.auth', 
+  'citizen-engagement.constants', 
+  'citizen-engagement.issue',
+  'citizen-engagement.user', 
+  'geolocation'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -87,13 +92,38 @@ angular.module('citizen-engagement', ['ionic', 'citizen-engagement.auth', 'citiz
         'tab-issues': {
           templateUrl: 'templates/tab-issues.html',
           resolve: {
-            issuesInRadius: function($http, apiUrl, AuthService){
-              return $http({
-                method: 'GET',
-                url: apiUrl + '/issues'
-              }).success(function(issues) {
-                return issues;
-              });
+            issuesInRadius: function($http, apiUrl, AuthService, $ionicLoading){
+              return 
+                /*$ionicLoading.show({
+                  template: 'Logging in...',
+                  delay: 750
+                });
+
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    var myLatlng = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                    };
+                });*/
+                //console.log('salut');
+                $http({
+                  //method: 'POST',
+                  method: 'GET',
+                  url: apiUrl + '/issues' /*'/issues/search',
+                  data: {
+                    "loc": {
+                      "$geoWithin": {
+                        "$centerSphere" : [
+                          [ myLatlng.lat , myLatlng.lng ],
+                          0.1
+                        ]
+                      }
+                    }
+                  }*/
+                }).success(function(issues) {
+                  //$ionicLoading.hide();
+                  return issues;
+                });
             }
           },
           controller: 'IssueCtrl'
@@ -106,16 +136,6 @@ angular.module('citizen-engagement', ['ionic', 'citizen-engagement.auth', 'citiz
       views: {  
         'tab-issues' : {
           templateUrl: 'templates/issueList.html',
-          controller: ''
-        }
-      }
-    })
-
-    .state('tab.issues/newIssue', {
-      url: '/issue/list',
-      views: {  
-        'tab-issues' : {
-          templateUrl: 'templates/newIssue.html',
           controller: ''
         }
       }
