@@ -6,7 +6,7 @@ angular.module('citizen-engagement.issue', [])
 
     // Add the register function to the scope.
     $scope.issuesList = function() {
-        // Go to the issue creation tab.
+        // Go to the issue c reation tab.
         $state.go('tab.issues/issuesList');
     };
 
