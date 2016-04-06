@@ -1,67 +1,76 @@
 angular.module('citizen-engagement.issue', [])
-
-.controller('IssueCtrl', function($scope, $state, issuesInRadius, AuthService) {
-        function initialize () {
-            var myLatlng = new google.maps.LatLng(0, 0);
-            var mapOptions = {
-                'center': myLatlng,
-                'zoom': 13,
-                'streetViewControl': false,
-                'mapTypeControl': false,
-                'panControl': false,  
-                'mapTypeId': google.maps.MapTypeId.ROADMAP
-            };
-            var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-            var infowindow = new google.maps.InfoWindow();
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(function(position) {
-                    var myLatlng = {
-                        lat: position.coords.latitude,
-                        lng: position.coords.longitude
-                    };
-                    var marker = new google.maps.Marker({
-                        'position': myLatlng,
-                        'map': map,
-                        'title': 'Issue map'
-                    });
-
-                    //Markers
-                    //http://stackoverflow.com/questions/3059044/google-maps-js-api-v3-simple-multiple-marker-example
-
-                    map.setCenter(myLatlng);
-                }, function() {
-                  handleLocationError(true, infoWindow, map.getCenter());
-                });
-            } else {
-                handleLocationError(false, infoWindow, map.getCenter());
-            }
-        }
-
-        google.maps.event.addDomListener(window, 'load', initialize);
-        ionic.Platform.ready(initialize); 
-
-        // Add the register function to the scope.
-        $scope.issuesList = function() {
-            // Go to the issue creation tab.
-            $state.go('tab.issues/issuesList');
-        };
-
-        $scope.newIssue = function() {
-            // Go to the issue creation tab.
-            $state.go('tab.issues/newIssue');
-        };
+    .factory('Map', function(geolocation) {
+      return {
+          'mapIssue': 
+              geolocation.getLocation().then(function (data) {
+                  return data.coords;
+              }, function (error) {
+                  console.log(error);
+              })
+      }
     })
+    
+  .controller('IssueCtrl', function($scope, $state, Map,  uiGmapGoogleMapApi, $q, issuesInRadius) {
+      $q.all([
+          Map.mapIssue,
+          uiGmapGoogleMapApi
+          ]).then(function(results) {
+              $scope.markers = [];
+              $scope.map = { center: { latitude: results[0].latitude, longitude: results[0].longitude }, zoom: 14 };
+              
+              //First marker, location of the user
+              $scope.markers.push({
+                  id: 0,
+                  latitude: results[0].latitude,
+                  longitude: results[0].longitude,
+                  title: { title: 'Me'},
+                  show: false
+              })
 
-  
+              angular.forEach(issuesInRadius.data, function(value, key) {
+                  $scope.markers.push({
+                      id: value.id,
+                      latitude: value.lat,
+                      longitude: value.lng,
+                      //title: value.description,
+                      icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+                      show: false,
+                      title: { title: value.description, picture: value.imageUrl}
+                  })
+              });
+          }, function(error) {
+              console.log(error);
+      });
+
+      $scope.onClick = function(marker, eventName, model) {
+          model.show = !model.show;
+      };
+
+      // Add the register function to the scope.
+      $scope.issuesList = function() {
+          // Go to the issue creation tab.
+          $state.go('tab.issues/issuesList');
+      };
+
+      $scope.newIssue = function() {
+          // Go to the issue creation tab.
+          $state.go('tab.issues/newIssue');
+      };
+  })
 
   .controller('IssueListCtrl', function(issuesList, $scope, $state) {
 
     // Add the register function to the scope.
-<<<<<<< HEAD
 
       $scope.issuesList=issuesList.data;
       console.log(issuesList.data);
 
+      $scope.issueDetail = function() {
+
+      // Go to the issue detail page
+        $state.go('tab.issues/issueDetail');
+
+      }
       //   $http({
       //   method: 'GET',
       //   url: //trouver comment avoir la position //apiUrl + '/users/logister',
@@ -78,13 +87,8 @@ angular.module('citizen-engagement.issue', [])
 
 
         // Go to the issue creation tab.
-=======
-    $scope.issuesList = function() {
-        // Go to the issue c reation tab.
->>>>>>> 4454534af13558801e4558373c7e181582d0a152
-        $state.go('tab.issues/issuesList');
 
-    })
+  })
 
   .controller('NewIssueCtrl', function(issuesList, $scope, $state) {
 

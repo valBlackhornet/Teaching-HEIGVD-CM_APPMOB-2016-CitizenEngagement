@@ -8,8 +8,6 @@
 .scroll {
     height: 100%;
 }
-
-<<<<<<< HEAD
 .colorOk{
 	background-color: rgba(0, 255, 0, 0.2);  
 	border-style: solid; 
@@ -20,12 +18,12 @@
 	background-color: rgba(255, 0, 0, 0.2); 
 	border-style: solid; 
 	border-color: #F5A9A9
-=======
+}
+
 .angular-google-map-container {
     position: absolute;
     top: 0;
     bottom: 0;
     right: 0;
     left: 0;
->>>>>>> 4454534af13558801e4558373c7e181582d0a152
 }

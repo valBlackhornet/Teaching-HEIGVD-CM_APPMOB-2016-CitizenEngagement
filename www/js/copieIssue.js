@@ -1,10 +1,5 @@
-<<<<<<< HEAD
 angular.module('citizen-engagement.issuet', [])  
-    /*.factory('Map', function() {
-=======
-angular.module('citizen-engagement.issue', [])  
     .factory('Map', function(geolocation) {
->>>>>>> 4454534af13558801e4558373c7e181582d0a152
         return {
             'mapIssue': 
                 geolocation.getLocation().then(function (data) {
@@ -14,6 +9,7 @@ angular.module('citizen-engagement.issue', [])
                 })
         }
     })
+    
     .controller('IssueCtrl', function($scope, $state, Map,  uiGmapGoogleMapApi, $q, issuesInRadius) {
         $q.all([
             Map.mapIssue,
