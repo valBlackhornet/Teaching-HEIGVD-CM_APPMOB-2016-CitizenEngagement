@@ -7,6 +7,10 @@
   "dependencies": {
     "a0-angular-storage": "0.0.13",
     "angularjs-geolocation": "^0.1.1",
+<<<<<<< HEAD
     "angular-leaflet-directive": "^0.10.0"
+=======
+    "angular-google-maps": "^2.3.2"
+>>>>>>> 4454534af13558801e4558373c7e181582d0a152
   }
 }

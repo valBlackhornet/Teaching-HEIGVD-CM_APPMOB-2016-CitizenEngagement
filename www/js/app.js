@@ -8,7 +8,8 @@ angular.module('citizen-engagement', ['ionic',
   'citizen-engagement.constants', 
   'citizen-engagement.issue',
   'citizen-engagement.user', 
-  'geolocation'])
+  'geolocation',
+  'uiGmapgoogle-maps'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -45,12 +46,18 @@ angular.module('citizen-engagement', ['ionic',
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider, uiGmapGoogleMapApiProvider) {
 
   //Delete the previous title
   $ionicConfigProvider.backButton.previousTitleText(false);
   //Delete the default text
   $ionicConfigProvider.backButton.text('');
+  
+  uiGmapGoogleMapApiProvider.configure({
+        key: 'AIzaSyCQR_VSbddfMh2BHLtdblVEGIK4HhT8BEo',
+        v: '3.17',
+        sensor: 'false',
+  })
 
   // Ionic uses AngularUI Router which uses the concept of states
   // Learn more here: https://github.com/angular-ui/ui-router
@@ -92,37 +99,24 @@ angular.module('citizen-engagement', ['ionic',
         'tab-issues': {
           templateUrl: 'templates/tab-issues.html',
           resolve: {
-            issuesInRadius: function($http, apiUrl, AuthService, $ionicLoading){
-              return 
-                /*$ionicLoading.show({
-                  template: 'Logging in...',
-                  delay: 750
-                });
-
-                navigator.geolocation.getCurrentPosition(function(position) {
-                    var myLatlng = {
-                        lat: position.coords.latitude,
-                        lng: position.coords.longitude
-                    };
-                });*/
-                //console.log('salut');
-                $http({
-                  //method: 'POST',
-                  method: 'GET',
-                  url: apiUrl + '/issues' /*'/issues/search',
+            issuesInRadius: function($http, apiUrl, AuthService){
+              return $http({
+                  method: 'POST',
+                  url: apiUrl + '/issues/search',
                   data: {
-                    "loc": {
-                      "$geoWithin": {
-                        "$centerSphere" : [
-                          [ myLatlng.lat , myLatlng.lng ],
-                          0.1
-                        ]
-                      }
-                    }
-                  }*/
+                          "loc": {
+                            "$geoWithin": {
+                              "$centerSphere" : [
+                                [ 46.7833, 6.65 ],
+                                10
+                              ]
+                            }
+                          }
+                        }
                 }).success(function(issues) {
-                  //$ionicLoading.hide();
                   return issues;
+                }).error(function(error) {
+                  console.log(error);
                 });
             }
           },

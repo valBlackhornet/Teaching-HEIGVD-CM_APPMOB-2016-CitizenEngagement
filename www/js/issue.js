@@ -57,6 +57,7 @@ angular.module('citizen-engagement.issue', [])
   .controller('IssueListCtrl', function(issuesList, $scope, $state) {
 
     // Add the register function to the scope.
+<<<<<<< HEAD
 
       $scope.issuesList=issuesList.data;
       console.log(issuesList.data);
@@ -77,6 +78,10 @@ angular.module('citizen-engagement.issue', [])
 
 
         // Go to the issue creation tab.
+=======
+    $scope.issuesList = function() {
+        // Go to the issue c reation tab.
+>>>>>>> 4454534af13558801e4558373c7e181582d0a152
         $state.go('tab.issues/issuesList');
 
     })
