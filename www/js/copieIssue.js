@@ -1,67 +1,49 @@
 angular.module('citizen-engagement.issue', [])  
-    /*.factory('Map', function() {
+    .factory('Map', function(geolocation) {
         return {
-            'mapIssue': function() {
+            'mapIssue': 
                 geolocation.getLocation().then(function (data) {
-                    var myLatlng = new google.maps.LatLng(data.coords.latitude, data.coords.longitude);
-                    var mapOptions = {
-                        'center': myLatlng,
-                        'zoom': 13,
-                        'streetViewControl': false,
-                        'mapTypeControl': false,
-                        'panControl': false,  
-                        'mapTypeId': google.maps.MapTypeId.ROADMAP
-                    };
-                    var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-                    var marker = new google.maps.Marker({
-                        'position': myLatlng,
-                        'map': map,
-                        'title': 'Issue map'
-                    });
-                });
-
-            } 
+                    return data.coords;
+                }, function (error) {
+                    console.log(error);
+                })
         }
-    })*/
-    .controller('IssueCtrl', function($scope, $state, issuesInRadius, AuthService) {
-        function initialize () {
-            var myLatlng = new google.maps.LatLng(0, 0);
-            var mapOptions = {
-                'center': myLatlng,
-                'zoom': 13,
-                'streetViewControl': false,
-                'mapTypeControl': false,
-                'panControl': false,  
-                'mapTypeId': google.maps.MapTypeId.ROADMAP
-            };
-            var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-            var infowindow = new google.maps.InfoWindow();
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(function(position) {
-                    var myLatlng = {
-                        lat: position.coords.latitude,
-                        lng: position.coords.longitude
-                    };
-                    var marker = new google.maps.Marker({
-                        'position': myLatlng,
-                        'map': map,
-                        'title': 'Issue map'
-                    });
+    })
+    .controller('IssueCtrl', function($scope, $state, Map,  uiGmapGoogleMapApi, $q, issuesInRadius) {
+        $q.all([
+            Map.mapIssue,
+            uiGmapGoogleMapApi
+            ]).then(function(results) {
+                $scope.markers = [];
+                $scope.map = { center: { latitude: results[0].latitude, longitude: results[0].longitude }, zoom: 14 };
+                
+                //First marker, location of the user
+                $scope.markers.push({
+                    id: 0,
+                    latitude: results[0].latitude,
+                    longitude: results[0].longitude,
+                    title: { title: 'Me'},
+                    show: false
+                })
 
-                    //Markers
-                    //http://stackoverflow.com/questions/3059044/google-maps-js-api-v3-simple-multiple-marker-example
-
-                    map.setCenter(myLatlng);
-                }, function() {
-                  handleLocationError(true, infoWindow, map.getCenter());
+                angular.forEach(issuesInRadius.data, function(value, key) {
+                    $scope.markers.push({
+                        id: value.id,
+                        latitude: value.lat,
+                        longitude: value.lng,
+                        //title: value.description,
+                        icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+                        show: false,
+                        title: { title: value.description, picture: value.imageUrl}
+                    })
                 });
-            } else {
-                handleLocationError(false, infoWindow, map.getCenter());
-            }
-        }
+            }, function(error) {
+                console.log(error);
+        });
 
-        google.maps.event.addDomListener(window, 'load', initialize);
-        ionic.Platform.ready(initialize); 
+        $scope.onClick = function(marker, eventName, model) {
+            model.show = !model.show;
+        };
 
         // Add the register function to the scope.
         $scope.issuesList = function() {
