@@ -1,6 +1,29 @@
 angular.module('citizen-engagement.issue', [])  
+    /*.factory('Map', function() {
+        return {
+            'mapIssue': function() {
+                geolocation.getLocation().then(function (data) {
+                    var myLatlng = new google.maps.LatLng(data.coords.latitude, data.coords.longitude);
+                    var mapOptions = {
+                        'center': myLatlng,
+                        'zoom': 13,
+                        'streetViewControl': false,
+                        'mapTypeControl': false,
+                        'panControl': false,  
+                        'mapTypeId': google.maps.MapTypeId.ROADMAP
+                    };
+                    var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+                    var marker = new google.maps.Marker({
+                        'position': myLatlng,
+                        'map': map,
+                        'title': 'Issue map'
+                    });
+                });
+
+            } 
+        }
+    })*/
     .controller('IssueCtrl', function($scope, $state, issuesInRadius, AuthService) {
-        alert(issuesInRadius);
         function initialize () {
             var myLatlng = new google.maps.LatLng(0, 0);
             var mapOptions = {
