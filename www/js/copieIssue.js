@@ -1,4 +1,4 @@
-angular.module('citizen-engagement.issue', [])  
+angular.module('citizen-engagement.issuet', [])  
     /*.factory('Map', function() {
         return {
             'mapIssue': function() {

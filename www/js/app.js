@@ -131,12 +131,32 @@ angular.module('citizen-engagement', ['ionic',
       }
     })
 
+.state('tab.issues/newIssue', {
+      url: '/issue/new',
+      views: {  
+        'tab-issues': {
+          templateUrl: 'templates/newIssue.html',
+          controller: ''
+        }
+      }
+    })
+
     .state('tab.issues/issuesList', {
       url: '/issue/list',
       views: {  
-        'tab-issues' : {
+        'tab-issues': {
           templateUrl: 'templates/issueList.html',
-          controller: ''
+          resolve: {
+            issuesList: function($http, apiUrl){
+              return $http({
+                method: 'GET',
+                url: apiUrl + '/issues/'
+              }).success(function(issuesList) {
+                return issuesList;
+              });
+            }
+          },
+          controller: 'IssueListCtrl'// IssueListCtrl
         }
       }
     })
@@ -150,6 +170,6 @@ angular.module('citizen-engagement', ['ionic',
 
   // Define the default state (i.e. the first screen displayed when the app opens).
   $urlRouterProvider.otherwise(function($injector) {
-    $injector.get('$state').go('tab.profile'); // Go to the new issue tab by default.
+    $injector.get('$state').go('tab.issues'); // Go to the new issue tab by default.
   });
 })
