@@ -1,38 +1,60 @@
 <ion-view view-title="New Issue">
 <ion-content>
-<ion-list>
-<div class="list list-inset">
+	<ion-list>
+		<div class="item item-divider"></div>
+		<label class="item item-input">
+				<span class="input-label">Description</span>
+				<input type="text" id="description">
+				</label>
+		</label>
+		<div class="item item-divider"></div>
+		<label class="item item-input">
+				<span class="input-label">City</span>
+				<input type="text" id="city" value="{{city}}"readonly>
+				</label>
+				<label class="item item-input">
+				  <span class="input-label">Address</span>
+				  <input type="text" id="address" value="{{address}}" readonly>
+				</label>
+		</label>
+		<div class="item item-divider"></div>
+		<label class = "item item-input item-select">
+			<div class = "input-label">
+				IssueType
+			</div>
+			<select>
+				<option 
+		           ng-repeat="issueType in issueTypes" 
+		           value="{{issueType.id}}"
+		       >
+		           {{issueType.name}}
+		       </option>
+			</select>
+		</label>
+		<div class="item item-divider"></div>
+		<label class="item item-input">
+			<span class="input-label">Photo</span>
+			<i class="icon ion-camera"></i>
+		</label>
 
-<label class="item item-input">
-	<span class="input-label" style="color:green;">Description</span>
-	<input type="text" id="description">
-</label>
-<label class="item item-input">
-	<span class="input-label">Lieu</span>
-	<i class="icon ion-map" style="color:green; font-size:22px"></i>
-	<input type="text" id="lieu">
-</label>
-<label class="item item-input">
-	<span class="input-label">Photo</span>
-	<i class="icon ion-camera"></i>
-	<input type="text" id="photo">
-</label>
+		<script id="my-modal.html" type="text/ng-template">
+		  <ion-modal-view>
+		    <ion-header-bar class="bar-stable bar-positive">
+		      <h1 class="title">Click on the place</h1>
+		      <div class="button button-clear" ng-click="modal.remove()"><span class="icon ion-close" click="closeModal"></span></div>
+		    </ion-header-bar>
 
-<label class = "item item-input item-select">
-	<div class = "input-label">
-		IssueType
-	</div>
-	<select>
-		<option selected>{state}</option>
-		<option>Renouveler</option>
-		<option>Nettoyage</option>
-	</select>
-</label>
+		    <ion-content >
+		      	<ui-gmap-google-map ng-if="oMap" center="oMap.center" zoom="oMap.zoom" draggable="true" options="options" events="oMap.events" class="window map">
+		        </ui-gmap-google-map>
+		    </ion-content>
+		  </ion-modal-view>
+		</script>
 
-<button class="button button-full button-positive" ng-click="">
-	Submit
-</button>
-</div>  
-<ion-list>
+		<div class="button-bar">
+		  <a class="button" ng-click="Geolocalise()" class="bar-stable bar-balanced">Edit address</a>
+		  <a class="button" ng-click="submit()" class="bar-stable bar-balanced">Create</a>
+		</div> 
+	</ion-list>
 </ion-content>
 </ion-view>

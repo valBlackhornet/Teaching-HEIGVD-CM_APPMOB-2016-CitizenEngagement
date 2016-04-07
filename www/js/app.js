@@ -130,7 +130,25 @@ angular.module('citizen-engagement', ['ionic',
       views: {  
         'tab-issues': {
           templateUrl: 'templates/newIssue.html',
-          controller: ''
+          resolve: {
+            issueInfos: function($http, apiUrl, $q, Map){
+              return $q.all([
+                Map.pos,
+                $http({
+                    method: 'GET',
+                    url: apiUrl + '/issueTypes'
+                  })
+                ]).then(function(results) {
+                    var issueInfos = {}
+                    issueInfos.coords = results[0];
+                    issueInfos.issueTypes = results[1].data;
+                    return issueInfos;
+                }, function(error) {
+                    console.log(error);
+              });
+            }
+          },
+          controller: 'NewIssueCtrl'
         }
       }
     })
