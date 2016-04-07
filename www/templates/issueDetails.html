@@ -1,5 +1,64 @@
-<ion-view view-title="New Issue">
-  <ion-content>
-    <p>Hello! This is the  issue creation screen.</p>
-  </ion-content>
+<ion-view view-title="The issue">
+
+<ion-content>
+
+<div class="list card">
+
+
+	<div class="item item-avatar">
+		<img src="http://www.quizz.biz/uploads/quizz/873333/14_5n42J.jpg"> 
+		<h2>{{issueDetails.issueType.name}}</h2>
+		<p>Updated on {{issueDetails.updatedOn}}</p>
+	</div>
+
+	<div class="item item-body">
+		<img class="full-image" src="{{issueDetails.imageUrl}}">
+
+
+		<div class="item item-text-wrap">
+		{{issueDetails.issueType.description}}
+		</div>
+
+		<div class="item item-divider">
+			Auteur
+		</div>
+		<div class="item item-text-wrap">
+			{{issueDetails.owner.name}}
+		</div>
+
+		<div class="item item-divider">
+			Etat
+		</div>
+		<div class="item item-text-wrap">
+			<div ng-class="{colorOk: issue.state=='solved', colorNotOk:issue.state!=='solved'}">{{issueDetails.state}}</div>
+		</div>
+<br/>
+		<a class="tab-item" href="#">
+			<i class="icon ion-map" ></i> See on the map!
+		</a>
+
+	</div>
+<br/>
+
+<div class="item item-divider">
+			Comments
+		</div>
+	 <label class="item item-input">
+    <textarea placeholder="Write a new comment..."></textarea>
+  </label>
+
+
+	<!--Boucle pour les commentaires déjà inscrits-->
+	<div class="list card">
+		<ion-list>
+		<ion-item ng-repeat="comment in issueDetails.comments" type="item-text-wrap">
+		<h2>{{comment.author.name}}</h2>
+		<p>{{comment.text}}</p>
+		<p>{{comment.postedOn}}</p>
+	</ion-item>
+</ion-list>
+
+</div>
+
+</ion-content>
 </ion-view>

@@ -63,14 +63,9 @@ angular.module('citizen-engagement.issue', [])
     // Add the register function to the scope.
 
       $scope.issuesList=issuesList.data;
-      console.log(issuesList.data);
+      //console.log(issuesList.data);
 
-      $scope.issueDetail = function() {
 
-      // Go to the issue detail page
-        $state.go('tab.issues/issueDetail');
-
-      }
       //   $http({
       //   method: 'GET',
       //   url: //trouver comment avoir la position //apiUrl + '/users/logister',
@@ -90,7 +85,7 @@ angular.module('citizen-engagement.issue', [])
 
   })
 
-  .controller('NewIssueCtrl', function(issuesList, $scope, $state) {
+  .controller('NewIssueCtrl', function($scope, $state) {
 
     $scope.newIssue = function() {
 
@@ -117,15 +112,16 @@ angular.module('citizen-engagement.issue', [])
 
   })
 
-   .controller('IssueDetailCtrl', function(issuesList, $scope, $state) {
-    $scope.issueDetail = function() {
+   .controller('IssueDetailCtrl', function(issueDetails, $scope, $state) {
 
-      // Go to the issue detail page
-        $state.go('tab.issues/issueDetail');
+        $scope.issueDetails = issueDetails.data;
+        console.log(issueDetails.data);
 
-    }
 
-      })
+      // // Go to the issue detail page
+      //   $state.go('tab.issues/issueDetails');
+
+    })
 
 
   
