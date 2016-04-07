@@ -8,16 +8,32 @@
 .scroll {
     height: 100%;
 }
-.colorOk{
-	background-color: rgba(0, 255, 0, 0.2);  
-	border-style: solid; 
-	border-color: #BCF5A9;
+
+
+
+
+.colorOk .item-content{
+    color: green; 
 }
 
-.colorNotOk{
-	background-color: rgba(255, 0, 0, 0.2); 
-	border-style: solid; 
-	border-color: #F5A9A9
+
+
+.colorNotOk .item-content{
+    color: green;
+}
+
+
+
+.item h2{
+    font-size: 15pt;
+}
+
+p.colorOk { 
+    color: green;
+}
+
+p.colorNotOk { 
+    color: red;
 }
 
 .angular-google-map-container {

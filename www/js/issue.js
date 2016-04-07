@@ -63,21 +63,14 @@ angular.module('citizen-engagement.issue', [])
     // Add the register function to the scope.
 
       $scope.issuesList=issuesList.data;
-      console.log(issuesList.data);
-
-      $scope.issueDetail = function() {
-
+      //console.log(issuesList.data);
       // Go to the issue detail page
-        $state.go('tab.issues/issueDetail');
-
-      }
 
   })
 
   .controller('NewIssueCtrl', function(issueInfos, $scope, $state, $ionicModal, Map) {
     $scope.issueTypes = issueInfos.issueTypes;
     var geocoder = new google.maps.Geocoder();
-
     
     var latLng = new google.maps.LatLng(issueInfos.coords.latitude, issueInfos.coords.longitude);
     geocoder.geocode({'latLng': latLng}, function(results, status){
@@ -137,15 +130,16 @@ angular.module('citizen-engagement.issue', [])
     };
   })
 
-   .controller('IssueDetailCtrl', function(issuesList, $scope, $state) {
-    $scope.issueDetail = function() {
+   .controller('IssueDetailCtrl', function(issueDetails, $scope, $state) {
 
-      // Go to the issue detail page
-        $state.go('tab.issues/issueDetail');
+        $scope.issueDetails = issueDetails.data;
+        console.log(issueDetails.data);
 
-    }
 
-      })
+      // // Go to the issue detail page
+      //   $state.go('tab.issues/issueDetails');
+
+    })
 
 
   

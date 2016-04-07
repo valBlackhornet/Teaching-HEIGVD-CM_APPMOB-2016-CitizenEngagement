@@ -126,7 +126,7 @@ angular.module('citizen-engagement', ['ionic',
     })
 
 .state('tab.issues/newIssue', {
-      url: '/issue/new',
+      url: '/issues/new',
       views: {  
         'tab-issues': {
           templateUrl: 'templates/newIssue.html',
@@ -153,8 +153,28 @@ angular.module('citizen-engagement', ['ionic',
       }
     })
 
+.state('tab.issues/issueDetails', {
+      url: '/issues/:issueId',
+      views: {  
+        'tab-issues': {
+          templateUrl: 'templates/issueDetails.html',
+          resolve: {
+            issueDetails: function($http, apiUrl, $stateParams){
+              return $http({
+                method: 'GET',
+                url: apiUrl + '/issues/' +  $stateParams.issueId 
+              }).success(function(issueDetails) {
+                return issueDetails;
+              });
+            }
+          },
+          controller: 'IssueDetailCtrl'//IssueDetailCtrl
+        }
+      }
+    })
+
     .state('tab.issues/issuesList', {
-      url: '/issue/list',
+      url: '/issues/list',
       views: {  
         'tab-issues': {
           templateUrl: 'templates/issueList.html',
