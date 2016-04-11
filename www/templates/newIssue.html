@@ -4,7 +4,7 @@
 		<div class="item item-divider"></div>
 		<label class="item item-input">
 				<span class="input-label">Description</span>
-				<input type="text" id="description">
+				<input type="text" ng-model="newIssue.description">
 				</label>
 		</label>
 		<div class="item item-divider"></div>
@@ -14,7 +14,13 @@
 				</label>
 				<label class="item item-input">
 				  <span class="input-label">Address</span>
-				  <input type="text" id="address" value="{{address}}" readonly>
+				  <input type="text" id="address" ng-model="address" readonly>
+				</label>
+				<label class="item item-input">
+				<span class="input-label">Edit address</span>
+				<button class="button button-clear" ng-click="Geolocalise()" >
+					<i class="icon ion-ios-location"></i>
+				</button>
 				</label>
 		</label>
 		<div class="item item-divider"></div>
@@ -22,11 +28,10 @@
 			<div class = "input-label">
 				IssueType
 			</div>
-			<select>
+			<select ng-model="mySelect" ng-change="showSelectValue(mySelect)">
 				<option 
 		           ng-repeat="issueType in issueTypes" 
-		           value="{{issueType.id}}"
-		       >
+		       	   value="{{issueType.id}}">
 		           {{issueType.name}}
 		       </option>
 			</select>
@@ -34,7 +39,9 @@
 		<div class="item item-divider"></div>
 		<label class="item item-input">
 			<span class="input-label">Photo</span>
-			<i class="icon ion-camera"></i>
+			<button class="button button-clear" ng-click="getPhoto()" >
+				<i class="icon ion-ios-camera"></i>
+			</button>
 		</label>
 
 		<script id="my-modal.html" type="text/ng-template">
@@ -50,11 +57,13 @@
 		    </ion-content>
 		  </ion-modal-view>
 		</script>
-
-		<div class="button-bar">
-		  <a class="button" ng-click="Geolocalise()" class="bar-stable bar-balanced">Edit address</a>
-		  <a class="button" ng-click="submit()" class="bar-stable bar-balanced">Create</a>
-		</div> 
 	</ion-list>
+	<label>
+		<img ng-src="data:image/png;base64,{{lastPhoto}}" class="center">
+	</label>
+	<div class="item item-divider"></div>
+	<div class="button-bar">
+	  <a class="button" ng-click="submit()" class="bar-stable bar-balanced">Create</a>
+	</div> 
 </ion-content>
 </ion-view>

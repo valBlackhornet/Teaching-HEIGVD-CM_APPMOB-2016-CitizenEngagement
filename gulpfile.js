@@ -60,6 +60,8 @@ function saveConfig(environment) {
 
     // Replace all occurrences of @apiUrl@.
     .pipe(replace(/@apiUrl@/g, config.apiUrl))
+    .pipe(replace(/@qimgUrl@/, config.qimgUrl))
+    .pipe(replace(/@qimgToken@/, config.qimgToken))
 
     // Save the result in www/js.
     .pipe(gulp.dest('www/js'));
@@ -71,4 +73,8 @@ gulp.task('config-development', function(){
 
 gulp.task('config-production', function(){
   saveConfig('production');
+});
+
+gulp.task('config-debug', function(){
+  saveConfig('debug');
 });

@@ -1,33 +1,64 @@
 angular.module('citizen-engagement.issue', [])
-    .factory('Map', function(geolocation, $q, uiGmapGoogleMapApi) {
+    .factory('Map', function($cordovaGeolocation, $q, uiGmapGoogleMapApi) {
       return {
-          pos: 
-              geolocation.getLocation().then(function (data) {
-                  return data.coords;
-              }, function (error) {
-                  console.log(error);
+          pos:
+              $cordovaGeolocation.getCurrentPosition({
+                enableHighAccuracy: true,
+                maximumAge: 0
+              }).then(function (position) {
+                return position.coords;
+              },function (error) {
+                console.log(error);
               })
         }
       })
-    
-  .controller('IssueCtrl', function($scope, $state, Map,  uiGmapGoogleMapApi, $q, issuesInRadius) {
-      $q.all([
-          Map.pos,
-          uiGmapGoogleMapApi
-          ]).then(function(results) {
-              $scope.markers = [];
-              $scope.map = { center: { latitude: results[0].latitude, longitude: results[0].longitude }, zoom: 14 };
-              
-              //First marker, location of the user
-              $scope.markers.push({
-                  id: 0,
-                  latitude: results[0].latitude,
-                  longitude: results[0].longitude,
-                  title: { title: 'Me'},
-                  show: false
-              })
 
-              angular.forEach(issuesInRadius.data, function(value, key) {
+  .factory('CameraService', ['$q', function($q) {
+    return {
+      getPicture: function(options) {
+        var q = $q.defer();
+        
+        navigator.camera.getPicture(function(result) {
+          // Do any magic you need
+          q.resolve(result);
+        }, function(err) {
+          q.reject(err);
+        }, options);
+        
+        return q.promise;
+      }
+    }
+  }])
+
+    
+  .controller('IssueCtrl', function($scope, $state, Map,  uiGmapGoogleMapApi, $q, issuesInRadius, $cordovaGeolocation) {
+      console.log(issuesInRadius.data);
+
+      
+
+      
+
+          //jessamynsmith/ionic-angular
+          var posOptions = {
+            enableHighAccuracy: true,
+            maximumAge: 0
+          };
+      $scope.$on('$ionicView.beforeEnter', function() {
+          uiGmapGoogleMapApi.then(function() {
+              $cordovaGeolocation.getCurrentPosition(posOptions).then(function (position) {
+
+                $scope.markers = [];
+                $scope.map = { center: { latitude: position.coords.latitude, longitude: position.coords.longitude }, zoom: 14 };
+                
+                //First marker, location of the user
+                $scope.markers.push({
+                    id: 0,
+                    latitude: position.coords.latitude,
+                    longitude: position.coords.longitude,
+                    title: { title: 'Me'},
+                    show: false
+                }) 
+                angular.forEach(issuesInRadius.data, function(value, key) {
                   $scope.markers.push({
                       id: value.id,
                       latitude: value.lat,
@@ -37,11 +68,13 @@ angular.module('citizen-engagement.issue', [])
                       show: false,
                       title: { title: value.description, picture: value.imageUrl}
                   })
+                });
+              },function (error) {
+                console.log(error);
               });
-          }, function(error) {
-              console.log(error);
+          });
       });
-
+      
       $scope.onClick = function(marker, eventName, model) {
           model.show = !model.show;
       };
@@ -68,20 +101,92 @@ angular.module('citizen-engagement.issue', [])
 
   })
 
-  .controller('NewIssueCtrl', function(issueInfos, $scope, $state, $ionicModal, Map) {
-    $scope.issueTypes = issueInfos.issueTypes;
-    var geocoder = new google.maps.Geocoder();
-    
+  .controller('NewIssueCtrl', function(issueInfos, apiUrl, qimgToken, $scope, $state, $ionicModal, CameraService, $http, qimgUrl) {
+    $scope.issueTypes = issueInfos.issueTypes;    
+
+    $scope.newIssue = {
+      description: "",
+      issueTypesId: $scope.issueTypes[0].id
+    };
+
     var latLng = new google.maps.LatLng(issueInfos.coords.latitude, issueInfos.coords.longitude);
+    var geocoder = new google.maps.Geocoder();
+    $scope.test = function () {
+      console.log('test');
+    };
+
+    $scope.getPhoto = function () {
+      console.log('Getting camera');
+      CameraService.getPicture({
+        quality: 75,
+        targetWidth: 400,
+        targetHeight: 300,
+        saveToPhotoAlbum: false,
+        destinationType: Camera.DestinationType.DATA_URL
+      }).then(function(imageURI) {
+        $http({
+          method: "POST",
+          url: qimgUrl + "/images",
+          headers: {
+          Authorization: "Bearer " + qimgToken
+          },
+          data: {
+          data: imageURI
+          }
+        }).success(function(data) {
+          console.log("yop" + data.url);
+          $scope.lastPhoto = imageURI;
+          $scope.imageUrl = data.url;
+          // do something with imageUrl
+        }).error(function(error) {
+          console.log(JSON.stringify(arguments));
+        });
+      }, function(err) {
+        console.log(err);
+      });
+    };
+
+    $scope.showSelectValue = function (mySelect) {
+      console.log(mySelect);
+      $scope.newIssue.issueTypesId = mySelect;
+    };
+
     geocoder.geocode({'latLng': latLng}, function(results, status){
-      $scope.address = results[0].address_components[1].long_name + " " 
+      $scope.$apply(function() {
+        $scope.address = results[0].address_components[1].long_name + " " 
               + results[0].address_components[0].long_name;
-      $scope.city = results[0].address_components[2].long_name != ""?results[0].address_components[2].long_name: "" + " " 
+        $scope.city = results[0].address_components[2].long_name != ""?results[0].address_components[2].long_name: "" + " " 
               + results[0].address_components[6].long_name;
-      console.log($scope.address);
-      $scope.lon =issueInfos.coords.longitude;
-      $scope.lat =issueInfos.coords.latitude;
+        $scope.lon =issueInfos.coords.longitude;
+        $scope.lat =issueInfos.coords.latitude;
+      });
     });
+    
+    $scope.submit = function () {
+      if ($scope.newIssue.description &&
+          $scope.newIssue.issueTypesId &&
+          $scope.lon &&
+          $scope.lat &&
+          $scope.imageUrl) {
+        $http({
+          method: "POST",
+          url: apiUrl + "/issues",
+          data: {
+            "description": $scope.newIssue.description,
+            "lng": $scope.lon,
+            "lat": $scope.lat,
+            "imageUrl": $scope.imageUrl,
+            "issueTypeId": $scope.newIssue.issueTypesId
+          }
+        }).success(function(data) {
+          $state.go('tab.issues/issuesList');
+        }).error(function(error) {
+          console.log(JSON.stringify(arguments));
+        });
+      } else {
+        $scope.error = "All must be filling";
+      };
+    };
 
     $scope.Geolocalise = function () {
       $ionicModal.fromTemplateUrl('my-modal.html', {
@@ -122,7 +227,7 @@ angular.module('citizen-engagement.issue', [])
         modal.show();
         $scope.closeModal = function () {
 
-              $scope.oMap = null;
+          $scope.oMap = null;
           $scope.modal.remove();
         };
 

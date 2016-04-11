@@ -36,7 +36,7 @@ angular.module('citizen-engagement.auth', ['angular-storage'])
     return service;
   })
 
-   .controller('LoginCtrl', function(apiUrl, AuthService, $http, $ionicHistory, $ionicLoading, $scope, $state) {
+   .controller('LoginCtrl', function(apiUrl, qimgToken, AuthService, $http, $ionicHistory, $ionicLoading, $scope, $state) {
 
     // The $ionicView.beforeEnter event happens every time the screen is displayed.
     $scope.$on('$ionicView.beforeEnter', function() {
@@ -81,7 +81,7 @@ angular.module('citizen-engagement.auth', ['angular-storage'])
         $state.go('tab.issues');
 
       }).error(function() {
-
+        
         // If an error occurs, hide the loading message and show an error message.
         $ionicLoading.hide();
         $scope.error = 'Could not log in.';

@@ -9,7 +9,8 @@ angular.module('citizen-engagement', ['ionic',
   'citizen-engagement.issue',
   'citizen-engagement.user', 
   'geolocation',
-  'uiGmapgoogle-maps'])
+  'uiGmapgoogle-maps',
+  'ngCordova'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -53,6 +54,10 @@ angular.module('citizen-engagement', ['ionic',
   //Delete the default text
   $ionicConfigProvider.backButton.text('');
   
+  $ionicConfigProvider.navBar.alignTitle('center');
+
+  $ionicConfigProvider.tabs.position('bottom');
+
   uiGmapGoogleMapApiProvider.configure({
         key: 'AIzaSyCQR_VSbddfMh2BHLtdblVEGIK4HhT8BEo',
         v: '3.17',
@@ -67,12 +72,14 @@ angular.module('citizen-engagement', ['ionic',
 
     // This is the abstract state for the tabs directive.
     .state('tab', {
+      cache: false,
       url: '/tab',
       abstract: true,
       templateUrl: 'templates/tabs.html'
     })
 
     .state('tab.profile', {
+      cache: false,
       url: '/profile',
       views: {
         'tab-profile': {
@@ -98,34 +105,35 @@ angular.module('citizen-engagement', ['ionic',
       views: {
         'tab-issues': {
           templateUrl: 'templates/tab-issues.html',
-          resolve: {
-            issuesInRadius: function($http, apiUrl, AuthService){
-              return $http({
-                  method: 'POST',
-                  url: apiUrl + '/issues/search',
-                  data: {
-                          "loc": {
-                            "$geoWithin": {
-                              "$centerSphere" : [
-                                [ 46.7833, 6.65 ],
-                                10
-                              ]
-                            }
-                          }
-                        }
-                }).success(function(issues) {
-                  return issues;
-                }).error(function(error) {
-                  console.log(error);
-                });
-            }
-          },
           controller: 'IssueCtrl'
+        }
+      },
+      resolve: {
+        issuesInRadius: function($http, apiUrl, AuthService){
+          return $http({
+              method: 'POST',
+              url: apiUrl + '/issues/search',
+              data: {
+                      "loc": {
+                        "$geoWithin": {
+                          "$centerSphere" : [
+                            [ 46.7833, 6.65 ],
+                            10
+                          ]
+                        }
+                      }
+                    }
+            }).success(function(issues) {
+              return issues;
+            }).error(function(error) {
+              console.log(error);
+            });
         }
       }
     })
 
 .state('tab.issues/newIssue', {
+      cache: false,
       url: '/issues/new',
       views: {  
         'tab-issues': {
@@ -153,7 +161,8 @@ angular.module('citizen-engagement', ['ionic',
       }
     })
 
-.state('tab.issues/issueDetails', {
+    .state('tab.issues/issueDetails', {
+      cache: false,
       url: '/issues/:issueId',
       views: {  
         'tab-issues': {
@@ -174,6 +183,7 @@ angular.module('citizen-engagement', ['ionic',
     })
 
     .state('tab.issues/issuesList', {
+      cache: false,
       url: '/issues/list',
       views: {  
         'tab-issues': {
@@ -194,6 +204,7 @@ angular.module('citizen-engagement', ['ionic',
     })
 
     .state('login', {
+      cache: false,
       url: '/login',
       controller: 'LoginCtrl',
       templateUrl: 'templates/login.html'
