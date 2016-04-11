@@ -2,63 +2,85 @@
 
 <ion-content>
 
-<div class="list card">
+<div class="list">
 
-
-	<div class="item item-avatar">
-		<img src="http://www.quizz.biz/uploads/quizz/873333/14_5n42J.jpg"> 
+	<div class="item ">
 		<h2>{{issueDetails.issueType.name}}</h2>
-		<p>Updated on {{issueDetails.updatedOn}}</p>
+		<p>Updated on {{issueDetails.updatedOn | date:'medium'}}</p>
 	</div>
 
-	<div class="item item-body">
+	<div class="list">
 		<img class="full-image" src="{{issueDetails.imageUrl}}">
 
-
 		<div class="item item-text-wrap">
-		{{issueDetails.issueType.description}}
-		</div>
-
-		<div class="item item-divider">
-			Auteur
-		</div>
-		<div class="item item-text-wrap">
-			{{issueDetails.owner.name}}
+			{{issueDetails.issueType.description}}
 		</div>
 
-		<div class="item item-divider">
-			Etat
-		</div>
-		<div class="item item-text-wrap">
-			<div ng-class="{colorOk: issue.state=='solved', colorNotOk:issue.state!=='solved'}">{{issueDetails.state}}</div>
-		</div>
-<br/>
-		<a class="tab-item" href="#">
-			<i class="icon ion-map" ></i> See on the map!
-		</a>
+		<label class="item item-input">
+			<span class="input-label ">
+				<div class="item item-divider">Auteur</div>
+				<div class="item item-text-wrap">
+				{{issueDetails.owner.name}}
+				</div>
+			</span>
+			<span class="input-label ">
+				<div class="item item-divider">
+					Etat
+				</div>
+				<div class="item item-text-wrap">
+				<div ng-class="{colorOk: issue.state=='solved', colorNotOk:issue.state!=='solved'}">{{issueDetails.state}}</div>
+				</div>
+			</span>
+			<span class="input-label ">
+				<button class="tab-item" ng-click="seeMap()">
+				<i class="icon ion-map" ></i> See on the map!
+				</button>
+			</span>
+		</label>
+		
 
 	</div>
-<br/>
+	<br/>
 
-<div class="item item-divider">
-			Comments
-		</div>
-	 <label class="item item-input">
-    <textarea placeholder="Write a new comment..."></textarea>
-  </label>
 
+	<div class="item item-divider">Comments</div>
+	<label class="item item-input">
+    	<textarea ng-model="text.comment" placeholder="Write a new comment..."></textarea>
+  	</label>
+
+    <ion-button >
+    	<button class="icon ion-plus-circled button-clear" ng-click="addComment()"  style="font-size: 40px;"></button>
+    </ion-button>
+		
 
 	<!--Boucle pour les commentaires déjà inscrits-->
-	<div class="list card">
+	<div class="list ">
 		<ion-list>
-		<ion-item ng-repeat="comment in issueDetails.comments" type="item-text-wrap">
+		<ion-item ng-repeat="comment in issueDetails.comments | orderBy:'- postedOn'" type="item-text-wrap">
 		<h2>{{comment.author.name}}</h2>
 		<p>{{comment.text}}</p>
-		<p>{{comment.postedOn}}</p>
+		<p>{{comment.postedOn | date:'medium'}}</p>
 	</ion-item>
 </ion-list>
 
 </div>
+
+<script id="my-modal.html" type="text/ng-template">
+		  <ion-modal-view>
+		    <ion-header-bar class="bar-stable bar-positive">
+		      <h1 class="title">The issue</h1>
+		      <div class="button button-clear" ng-click="modal.remove()"><span class="icon ion-close" click="closeModal"></span></div>
+		    </ion-header-bar>
+
+		    <ion-content >
+		      	<ui-gmap-google-map ng-if="oMap" center="oMap.center" zoom="oMap.zoom" draggable="true" options="options" events="oMap.events" class="window map">
+					<ui-gmap-markers models="marker" coords="'coords'" >
+					</ui-gmap-markers>
+		        </ui-gmap-google-map>
+		    </ion-content>
+
+		  </ion-modal-view>
+		</script>
 
 </ion-content>
 </ion-view>
