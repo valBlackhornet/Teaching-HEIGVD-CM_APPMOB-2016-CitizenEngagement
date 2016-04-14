@@ -1,22 +1,16 @@
-# Présentation de notre application "Citizen Engagement"
+# Présentation de l'application "Citizen Engagement"
 
 <a name="top"></a>
 
 Ce répertoire permet de comprendre toutes les fonctionnalités de l'application mobile au travers de screenshot et d'explications.
 
-* [Prerequisites](#pre)
-* [Features](#features)
+* [Fonctionnalités](#features)
 
 1. [Première étape: Les Mockups](#ui)
 2. [Set up the application](#setup)
 3. [Set up the navigation structure](#structure)
 4. [Implémentation du login](#security)
   * [Création de la page login et logout](#security-login-screen)
-
-<a name="pre"></a>
-## Prerequisites
-
-<a href="#top">Back to top</a>
 
 
 <a name="features"></a>
@@ -46,15 +40,12 @@ Cette application permet aux utilisateurs de faires les choses suivantes:
 
 
 <a name="ui"></a>
-## 1. Design the user interface
+## 1. Conception de l'interface utilisateur
 
-Before diving into the code, you should always take a moment to design the user interface of your app.
-This doesn't have to be a final design, but it should at least be a sketch of what you want.
-This helps you think in terms of the whole app and of the relationships between screens.
+Avant de concevoir notre application, nous avons réalisé des mockups des pages utiles pour chacune de nos fonctionnalités afin de visualiser une structure de base et être clair sur le travail à fournir.
 
-In this case, we have used [Fluid UI](https://www.fluidui.com) but anything is fine, from your favorite sketching tool to pencil and paper.
-
-[Click here to see an interactive preview of the UI.](https://www.fluidui.com/editor/live/preview/p_bK038hItMrt8WnBP3PoHvfA5OdMtWLPS.1425646707110)
+Pour le faire, nous avons utilisé [Fluid UI](https://www.fluidui.com).
+[Cliquez ici pour voir un aperçu de nos mockups](https://www.fluidui.com/editor/live/preview/p_onGAuhWggwgJk9UxFvpbrlUqWxlmfde8.1460667315369)
 
 ![UI Design](setup/ui-structure.png)
 
