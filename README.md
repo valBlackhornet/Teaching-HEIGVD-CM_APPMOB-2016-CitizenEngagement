@@ -18,11 +18,13 @@ Ce répertoire permet de comprendre toutes les fonctionnalités de l'application
 
 Cette application permet aux utilisateurs de faires les choses suivantes:
 
+* S'autentifier
+* Voir les détails du profil utilisateur
 * Ajouter un nouveau problème:
   * Le problème doit avoir un type, une description
   * Il doit pouvoir être localisé et donner la position géographique du problème
   * Il doit prendre une photo de celui-ci.
-* Voir la position d'une problème existant
+* Voir la position d'un problème existant
 * Lister les problèmes existants
   * Les problèmes sont listés par ordre chronologique du plus récent au plus ancien.
 * Voir les détails d'un problème
