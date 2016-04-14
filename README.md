@@ -49,7 +49,7 @@ Pour le faire, nous avons utilisé [Fluid UI](https://www.fluidui.com).
 
 [Cliquez ici pour voir un aperçu de nos mockups](https://www.fluidui.com/editor/live/preview/p_onGAuhWggwgJk9UxFvpbrlUqWxlmfde8.1460667315369)
 
-![UI Design](https://www.fluidui.com/editor/live/preview/p_onGAuhWggwgJk9UxFvpbrlUqWxlmfde8.1460667315369)(setup/mockup.JPG)
+![UI Design](setup/mockup.JPG)
 
 Comme vous pouvez le voir, l'application a 6 interfaces différentes:
 
