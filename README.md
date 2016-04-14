@@ -47,7 +47,7 @@ Avant de concevoir notre application, nous avons réalisé des mockups des pages
 Pour le faire, nous avons utilisé [Fluid UI](https://www.fluidui.com).
 [Cliquez ici pour voir un aperçu de nos mockups](https://www.fluidui.com/editor/live/preview/p_onGAuhWggwgJk9UxFvpbrlUqWxlmfde8.1460667315369)
 
-![UI Design](setup/mockup.jpg)
+![UI Design](setup/mockup.JPG)
 
 As you can see, we propose to use a tab view with 3 screens, and an additional 4th screen accessible from the issue list:
 
