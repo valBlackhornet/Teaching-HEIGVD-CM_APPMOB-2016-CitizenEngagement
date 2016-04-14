@@ -1,75 +1,45 @@
-# Citizen Engagement Mobile Application
+# Présentation de notre application "Citizen Engagement"
 
 <a name="top"></a>
 
-This repository contains instructions to build a skeleton application that will serve as a starting point to develop the Citizen Engagement mobile application.
-The completed skeleton app is available [here](https://github.com/SoftEng-HEIGVD/Teaching-HEIGVD-CM_APPMOB-2016-SkeletonApp).
+Ce répertoire permet de comprendre toutes les fonctionnalités de l'application mobile au travers de screenshot et d'explications.
 
 * [Prerequisites](#pre)
 * [Features](#features)
 
-1. [Design the user interface](#ui)
+1. [Première étape: Les Mockups](#ui)
 2. [Set up the application](#setup)
-  * [Fork this repo and put a blank Ionic app in it](#setup-fork)
-  * [Install application dependencies](#setup-deps)
-  * [Serve the application locally](#setup-serve)
-  * [Rename the main AngularJS module](#setup-rename)
 3. [Set up the navigation structure](#structure)
-  * [Create the templates](#structure-create-templates)
-  * [Update the app to use the templates](#structure-use-templates)
-  * [Define the states (or routes)](#structure-states)
-4. [Set up security](#security)
-  * [Create the login screen](#security-login-screen)
-  * [Create the authentication service](#security-auth-service)
-  * [Set up a proxy (for local development only)](#security-proxy)
-  * [Log in with the API](#security-api-login)
-  * [Log out](#security-logout)
-  * [Storing the authentication credentials](#security-store)
-  * [Configuring an HTTP interceptor](#security-interceptor)
-5. [Multi-environment configuration](#multienv)
-  * [Write environment-specific configuration files](#multienv-config)
-  * [Do not put configuration files under version control](#multienv-ignore)
-  * [Feed the configuration to Angular](#multienv-angular)
-
-
-
+4. [Implémentation du login](#security)
+  * [Création de la page login et logout](#security-login-screen)
 
 <a name="pre"></a>
 ## Prerequisites
 
-These instructions assume that you have implemented and deployed the Citizen Engagement API as described in [this article](http://www.iflux.io/use-case/2015/02/03/citizen-engagement.html) and [this course repository](https://github.com/SoftEng-HEIGVD/Teaching-HEIGVD-CM_WEBS-2016).
-
-You will need to have [Node.js](https://nodejs.org) installed.
-The latest LTS (Long Term Support) version is recommended (v4.4.2 at the time of writing these instructions).
-The Ionic documentation currently indicates that versions v5.x.x are not supported.
-
 <a href="#top">Back to top</a>
 
 
-
 <a name="features"></a>
-## Features
+## Fonctionnalités
 
-This guide describes a proposed list of features and a user interface based on those features.
-This is only a suggestion. You can support other features and make a different user interface.
+Cette application permet aux utilisateurs de faires les choses suivantes:
 
-The proposed app should allow citizens to do the following:
-
-* add new issues:
-  * the issue should have a type and description;
-  * the user should be able to take a photo of the issue;
-  * the issue should be geolocated;
-* see existing issues on an interactive map;
-* browse the list of existing issues:
-  * issues should be sorted by date;
-* see the details of an issue:
-  * date;
-  * description;
-  * picture;
-  * comments;
-* add comments to an issue.
-
-The following sections describe a proposed UI mockup of the app and steps to set up a skeleton implementation.
+* Ajouter un nouveau problème:
+  * Le problème doit avoir un type, une description
+  * Il doit pouvoir être localisé et donner la position géographique du problème
+  * Il doit prendre une photo de celui-ci.
+* Voir la position d'une problème existant
+* Lister les problèmes existants
+  * Les problèmes sont listés par ordre chronologique du plus récent au plus ancien.
+* Voir les détails d'un problème
+  * Date de création
+  * Photo
+  * Description
+  * Auteur 
+  * Etat
+  * La position sur une carte
+  * Les commentaires
+* Ajouter des commentaires à un problème 
 
 <a href="#top">Back to top</a>
 
