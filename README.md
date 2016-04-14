@@ -46,7 +46,7 @@ Cette application permet aux utilisateurs de faires les choses suivantes:
 Avant de concevoir notre application, nous avons réalisé des mockups des pages utiles pour chacune de nos fonctionnalités afin de visualiser une structure de base et être clair sur le travail à fournir.
 
 Pour le faire, nous avons utilisé [Fluid UI](https://www.fluidui.com).
-[Cliquez ici pour voir un aperçu de nos mockups](https://www.fluidui.com/editor/live/preview/p_onGAuhWggwgJk9UxFvpbrlUqWxlmfde8.1460667315369)
+<p>[Cliquez ici pour voir un aperçu de nos mockups](https://www.fluidui.com/editor/live/preview/p_onGAuhWggwgJk9UxFvpbrlUqWxlmfde8.1460667315369)</p>
 
 ![UI Design](setup/mockup.JPG)
 
