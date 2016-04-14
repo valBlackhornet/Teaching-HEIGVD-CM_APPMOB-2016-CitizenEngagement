@@ -55,11 +55,11 @@ Comme vous pouvez le voir, l'application a 6 interfaces différentes:
 * La page login / inscription;
 * La page des donnés de l'utilsateur;
 * La page d'accueil avec un carte répertoriant les problèmes les plus proches de la position de l'utilisateur au moment de l'utilisation;
-* La page de création d'un nouveau problème:
-* La page d'un problème en particulier:
+* La page de création d'un nouveau problème;
+* La page d'un problème en particulier;
 * La page de la liste de tous les problèmes ordrés du plus récent au plus vieux.
 
-Now that we know what we want, we can start setting up the app!
+Une fois que nous avions terminés nos mockups, nous sommes passés à la réalisation.
 
 <a href="#top">Back to top</a>
 
