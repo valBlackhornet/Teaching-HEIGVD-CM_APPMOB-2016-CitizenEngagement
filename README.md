@@ -6,12 +6,12 @@ Ce répertoire permet de comprendre le fonctionnement général de cette applica
 
 1. [Liste des fonctionnalités](#features)
 2. [Conception de l'interface utilisateur](#ui)
-2. [Page de connexion et déconnexion](#loginLogout)
-3. [Page d'un utilisateur](#profil)
-3. [Page d'accueil](#mainPage)
-4. [Page d'un nouveau problème](#newIssue)
-5. [Page de la liste des problèmes](#listofIssues)
-6. [Page d'un problème](#detailsofIssue)
+3. [Page de connexion et déconnexion](#loginLogout)
+4. [Page d'un utilisateur](#profil)
+5. [Page d'accueil](#mainPage)
+6. [Page d'un nouveau problème](#newIssue)
+7. [Page de la liste des problèmes](#listofIssues)
+8. [Page d'un problème](#detailsofIssue)
 
 
 <a name="features"></a>
@@ -67,10 +67,22 @@ Une fois que nous avions terminés nos mockups, nous sommes passés à la réali
 
 
 
-<a name="setup"></a>
-## 3. Set up the application
+<a name="loginLogout"></a>
+## 3. Page de connexion et déconnexion
+
+<a name="profil"></a>
+## 4. Page d'un utilisateur
+
+<a name="mainPage"></a>
+## 5. Page d'accueil
+
+<a name="newIssue"></a>
+## 6. Page d'un nouveau problème
+
+<a name="listofIssues"></a>
+## 7. Page de la liste des problèmes
+
+<a name="detailsofIssue"></a>
+## 8. Page d'un problème
 
 
-
-<a name="setup-fork"></a>
-### Fork this repo and put a blank Ionic app in it
