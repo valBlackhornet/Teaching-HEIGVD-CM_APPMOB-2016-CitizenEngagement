@@ -6,8 +6,8 @@ Ce répertoire explique le fonctionnement général de l'application "Citizen En
 
 1. [Liste des fonctionnalités](#features)
 2. [Conception de l'interface utilisateur](#ui)
-3. [Page de connexion et déconnexion](#loginLogout)
-4. [Page d'un utilisateur](#profil)
+3. [Page de connexion](#login)
+4. [Page d'un utilisateur et déconnexion](#profil)
 5. [Page d'accueil](#mainPage)
 6. [Page d'un nouveau problème](#newIssue)
 7. [Page de la liste des problèmes](#listofIssues)
