@@ -2,11 +2,10 @@
 
 <a name="top"></a>
 
-Ce répertoire permet de comprendre toutes les fonctionnalités de l'application mobile au travers de screenshot et d'explications.
+Ce répertoire permet de comprendre le fonctionnement général de cette application mobile.
 
-* [Fonctionnalités](#features)
-
-1. [Première étape: Les Mockups](#ui)
+1. [Liste des fonctionnalités](#features)
+2. [Première étape: Les Mockups](#ui)
 2. [Set up the application](#setup)
 3. [Set up the navigation structure](#structure)
 4. [Implémentation du login](#security)
@@ -14,19 +13,19 @@ Ce répertoire permet de comprendre toutes les fonctionnalités de l'application
 
 
 <a name="features"></a>
-## Fonctionnalités
+## 1. Liste des fonctionnalités
 
 Cette application permet aux utilisateurs de faires les choses suivantes:
 
-* S'autentifier
-* Voir les détails du profil utilisateur
-* Ajouter un nouveau problème:
+* S'authentifier(#login)
+* Voir les détails du profil utilisateur(#profil)
+* Ajouter un nouveau problème(#newIssue):
   * Le problème doit avoir un type, une description
   * Il doit pouvoir être localisé et donner la position géographique du problème
   * Il doit prendre une photo de celui-ci.
-* Lister les problèmes existants
+* Lister les problèmes existants (#listofIssues)
   * Les problèmes sont listés par ordre chronologique du plus récent au plus ancien.
-* Voir les détails d'un problème
+* Voir les détails d'un problème(#detailsofIssue)
   * Date de création
   * Photo
   * Description
@@ -34,14 +33,14 @@ Cette application permet aux utilisateurs de faires les choses suivantes:
   * Etat
   * La position sur une carte
   * Les commentaires
-* Ajouter des commentaires à un problème 
+* Ajouter des commentaires à un problème(#detailsofIssue) 
 
 <a href="#top">Back to top</a>
 
 
 
 <a name="ui"></a>
-## 1. Conception de l'interface utilisateur
+## 2. Conception de l'interface utilisateur
 
 Avant de concevoir notre application, nous avons réalisé des mockups des pages utiles pour chacune de nos fonctionnalités afin de visualiser une structure de base et être clair sur le travail à fournir.
 
@@ -67,7 +66,7 @@ Une fois que nous avions terminés nos mockups, nous sommes passés à la réali
 
 
 <a name="setup"></a>
-## 2. Set up the application
+## 3. Set up the application
 
 
 
