@@ -6,12 +6,12 @@ Ce répertoire permet de comprendre le fonctionnement général de cette applica
 
 1. [Liste des fonctionnalités](#features)
 2. [Conception de l'interface utilisateur](#ui)
-2. [Page de connexion et déconnexion](#setup)
-3. [Page d'un utilisateur](#setup)
-3. [Page d'accueil](#structure)
-4. [Page d'un nouveau problème](#security)
-5. [Page de la liste des problèmes](#security)
-6. [Page d'un problème](#security)
+2. [Page de connexion et déconnexion](#loginLogout)
+3. [Page d'un utilisateur](#profil)
+3. [Page d'accueil](#mainPage)
+4. [Page d'un nouveau problème](#newIssue)
+5. [Page de la liste des problèmes](#listofIssues)
+6. [Page d'un problème](#detailsofIssue)
 
 
 <a name="features"></a>
@@ -19,7 +19,7 @@ Ce répertoire permet de comprendre le fonctionnement général de cette applica
 
 Cette application permet aux utilisateurs de faires les choses suivantes:
 
-* [S'authentifier](#login)
+* [S'authentifier](#loginLogout)
 * [Voir les détails du profil utilisateur](#profil)
 * [Ajouter un nouveau problème](#newIssue):
   * Le problème doit avoir un type, une description
