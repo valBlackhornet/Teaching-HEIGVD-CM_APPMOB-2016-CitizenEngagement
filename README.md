@@ -79,7 +79,7 @@ Pour pouvoir utiliser les fonctionnalités de l'application, l'utilisateur doit 
 <a name="profil"></a>
 ## 4. Page d'un utilisateur et déconnexion
 
-L'utilisateur peut à tout moment voir ses coordonnées depuis l'onglet profil facile d'accès en bas de l'interface. C'est dans cette page que l'utilisateur pourra se déconnecter. 
+L'utilisateur peut à tout moment voir ses coordonnées depuis l'onglet "profil" facilement accessible en bas de l'interface. C'est dans cette page que l'utilisateur pourra se déconnecter, ce qui le ramènera directement à la page de login. 
 
 ![Profil](setup/profil.JPG)
 
@@ -88,17 +88,23 @@ L'utilisateur peut à tout moment voir ses coordonnées depuis l'onglet profil f
 <a name="mainPage"></a>
 ## 5. Page d'accueil
 
+Une fois connecté, l'utilisateur arrivera sur la page d'accueil. Cette page donne l'emplacement de l'utilisateur, ainsi que tous les problèmes répertoriés dans un rayon prédéfini. Si l'utilisateur clique sur un des marqueurs, une bulle s'ouvre avec la description et la photo du problème.
 
+Sur cette page d'accueil, il y a des onglets en haut et en bas. En haut, de gauche à droite, se trouve le lien pour aller voir la liste des problèmes, puis la possibilité de créer un problème. En bas, se trouve l'onglet "issues" qui permet de revenir chaque fois à la page d'accueil et "profil" qui donne les coordonnées de l'utilisateur. 
 
 <a href="#top">Haut de la page</a>
 
 <a name="newIssue"></a>
 ## 6. Page d'un nouveau problème
 
+Lorsque l'on veut créer un nouveau problème, il faut dans un premier temps donner une description du problème. L'adresse est complétée directement avec la position de l'utilisateur. S'il le désire, il peut éditer l'adresse du problème grâce à l'onglet "Edit address" qui le dirige sur une carte où il peut placer le marqueur à l'adresse qu'il veut. Revenu sur la page, il faut sélectionner le type du problème pour le catégoriser, et prendre une photo de celui-ci. C'est en cliquant sur "create" que le problème sera enregistré dans la base de donnée.  
+
 <a href="#top">Haut de la page</a>
 
 <a name="listofIssues"></a>
 ## 7. Page de la liste des problèmes
+
+
 
 <a href="#top">Haut de la page</a>
 
