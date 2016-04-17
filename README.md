@@ -6,13 +6,12 @@ Ce répertoire explique le fonctionnement général de l'application "Citizen En
 
 1. [Liste des fonctionnalités](#features)
 2. [Conception de l'interface utilisateur](#ui)
-3. [Déroulement](#progress)
-3.1 [Page de connexion et déconnexion](#loginLogout)
-3.2 [Page d'un utilisateur](#profil)
-3.3 [Page d'accueil](#mainPage)
-3.4 [Page d'un nouveau problème](#newIssue)
-3.5 [Page de la liste des problèmes](#listofIssues)
-3.6 [Page d'un problème](#detailsofIssue)
+3 [Page de connexion et déconnexion](#loginLogout)
+4. [Page d'un utilisateur](#profil)
+5. [Page d'accueil](#mainPage)
+6. [Page d'un nouveau problème](#newIssue)
+7. [Page de la liste des problèmes](#listofIssues)
+8. [Page d'un problème](#detailsofIssue)
 
 
 <a name="features"></a>
@@ -66,13 +65,8 @@ Une fois que nous avions terminés nos mockups, nous sommes passés à la réali
 
 <a href="#top">Haut de la page</a>
 
-
-<a name="progress"></a>
-3. Déroulement
-
-
 <a name="login"></a>
-### 3.1 Page de connexion
+## 3. Page de connexion
 
 Pour pouvoir utiliser les fonctionnalités de l'application, l'utilisateur doit commencer par s'enregistrer ou se loguer par son nom et son prénom. Tant qu'il n'a pas complété les deux champs, le bouton reste pas cliquable. 
 
@@ -83,7 +77,7 @@ Pour pouvoir utiliser les fonctionnalités de l'application, l'utilisateur doit 
 <a href="#top">Haut de la page</a>
 
 <a name="profil"></a>
-## 3.2 Page d'un utilisateur et déconnexion
+## 4. Page d'un utilisateur et déconnexion
 
 L'utilisateur peut à tout moment voir ses coordonnées depuis l'onglet profil facile d'accès en bas de l'interface. C'est dans cette page que l'utilisateur pourra se déconnecter. 
 
@@ -92,24 +86,24 @@ L'utilisateur peut à tout moment voir ses coordonnées depuis l'onglet profil f
 <a href="#top">Haut de la page</a>
 
 <a name="mainPage"></a>
-## 3.3 Page d'accueil
+## 5. Page d'accueil
 
 
 
 <a href="#top">Haut de la page</a>
 
 <a name="newIssue"></a>
-## 3.4 Page d'un nouveau problème
+## 6. Page d'un nouveau problème
 
 <a href="#top">Haut de la page</a>
 
 <a name="listofIssues"></a>
-## 3.5 Page de la liste des problèmes
+## 7. Page de la liste des problèmes
 
 <a href="#top">Haut de la page</a>
 
 <a name="detailsofIssue"></a>
-## 3.6 Page d'un problème
+## 8. Page d'un problème
 
 <a href="#top">Haut de la page</a>
 
