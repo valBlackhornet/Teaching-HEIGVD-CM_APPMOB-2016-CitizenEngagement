@@ -2,9 +2,9 @@
 
 <a name="top"></a>
 
-Application mobile réalisée dans le cadre du cours "AppMobile" de Comem+ à l'heig-vd.+----------------------------------+
-Étudiants: Valérie Stauffer et Emmanuel Schenk
-+----------------------------------------+
+*Application mobile réalisée dans le cadre du cours "AppMobile" de Comem+ à l'heig-vd.
+*Étudiants: Valérie Stauffer et Emmanuel Schenk
+
 
 
 Ce répertoire explique le fonctionnement général de l'application "Citizen Engagement". Celle-ci permet d'identifier des problèmes dans une ville et de les répertorier dans une base de donnée grâce à l'application. Ces problèmes sont décrits avec une photo, du texte, une position sur une carte ainsi qu'un status pour dire si le problème est résolu ou est encore à faire. 
