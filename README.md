@@ -72,7 +72,7 @@ Une fois que nous avions terminés nos mockups, nous sommes passés à la réali
 
 Pour pouvoir utiliser les fonctionnalités de l'application, l'utilisateur doit commencer par s'enregistrer ou se loguer par son nom et son prénom.
 
-![Login](setup/login.JPG)
+![Login](setup/login.JPG)![LoginValidated](setup/login2.JPG)
 
 
 
