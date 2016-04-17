@@ -17,15 +17,15 @@ Ce répertoire permet de comprendre le fonctionnement général de cette applica
 
 Cette application permet aux utilisateurs de faires les choses suivantes:
 
-* S'authentifier(#login)
-* Voir les détails du profil utilisateur(#profil)
-* Ajouter un nouveau problème(#newIssue):
+* [S'authentifier](#login)
+* [Voir les détails du profil utilisateur](#profil)
+* [Ajouter un nouveau problème](#newIssue):
   * Le problème doit avoir un type, une description
   * Il doit pouvoir être localisé et donner la position géographique du problème
   * Il doit prendre une photo de celui-ci.
-* Lister les problèmes existants (#listofIssues)
+* [Lister les problèmes existants] (#listofIssues)
   * Les problèmes sont listés par ordre chronologique du plus récent au plus ancien.
-* Voir les détails d'un problème(#detailsofIssue)
+* [Voir les détails d'un problème](#detailsofIssue)
   * Date de création
   * Photo
   * Description
@@ -33,7 +33,7 @@ Cette application permet aux utilisateurs de faires les choses suivantes:
   * Etat
   * La position sur une carte
   * Les commentaires
-* Ajouter des commentaires à un problème(#detailsofIssue) 
+* [Ajouter des commentaires à un problème](#detailsofIssue) 
 
 <a href="#top">Back to top</a>
 
