@@ -6,10 +6,12 @@ Ce répertoire permet de comprendre le fonctionnement général de cette applica
 
 1. [Liste des fonctionnalités](#features)
 2. [Conception de l'interface utilisateur](#ui)
-2. [Set up the application](#setup)
-3. [Set up the navigation structure](#structure)
-4. [Implémentation du login](#security)
-  * [Création de la page login et logout](#security-login-screen)
+2. [Page de connexion et déconnexion](#setup)
+3. [Page d'un utilisateur](#setup)
+3. [Page d'accueil](#structure)
+4. [Page d'un nouveau problème](#security)
+5. [Page de la liste des problèmes](#security)
+6. [Page d'un problème](#security)
 
 
 <a name="features"></a>
@@ -56,8 +58,8 @@ Comme vous pouvez le voir, l'application a 6 interfaces différentes:
 * La page des donnés de l'utilsateur;
 * La page d'accueil avec un carte répertoriant les problèmes les plus proches de la position de l'utilisateur au moment de l'utilisation;
 * La page de création d'un nouveau problème;
-* La page d'un problème en particulier;
-* La page de la liste de tous les problèmes ordrés du plus récent au plus vieux.
+* La page de la liste de tous les problèmes ordrés du plus récent au plus vieux;
+* La page d'un problème en particulier.
 
 Une fois que nous avions terminés nos mockups, nous sommes passés à la réalisation.
 
