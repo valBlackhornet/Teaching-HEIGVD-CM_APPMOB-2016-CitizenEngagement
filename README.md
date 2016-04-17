@@ -1,7 +1,7 @@
 # Présentation de l'application "Citizen Engagement"
 
 <a name="top"></a>
-+----------------------------------------------------------------------------------+
++----------------+
 Application mobile réalisée dans le cadre du cours "AppMobile" de Comem+ à l'heig-vd.
 Étudiants: Valérie Stauffer et Emmanuel Schenk
 +----------------------------------------------------------------------------------+
