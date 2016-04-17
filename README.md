@@ -37,7 +37,7 @@ Cette application permet aux utilisateurs de faires les choses suivantes:
   * Les commentaires
 * [Ajouter des commentaires à un problème](#detailsofIssue) 
 
-<a href="#top">Back to top</a>
+<a href="#top">Haut de la page</a>
 
 
 
@@ -63,26 +63,44 @@ Comme vous pouvez le voir, l'application a 6 interfaces différentes:
 
 Une fois que nous avions terminés nos mockups, nous sommes passés à la réalisation.
 
-<a href="#top">Back to top</a>
+<a href="#top">Haut de la page</a>
 
 
 
 <a name="loginLogout"></a>
-## 3. Page de connexion et déconnexion
+## 3. Page de connexion
+
+Pour pouvoir utiliser les fonctionnalités de l'application, l'utilisateur doit commencer par s'enregistrer ou se loguer par son nom et son prénom.
+
+![Login](setup/login.jpg)
+
+
+
+<a href="#top">Haut de la page</a>
 
 <a name="profil"></a>
-## 4. Page d'un utilisateur
+## 4. Page d'un utilisateur et déconnexion
+
+<a href="#top">Haut de la page</a>
 
 <a name="mainPage"></a>
 ## 5. Page d'accueil
 
+<a href="#top">Haut de la page</a>
+
 <a name="newIssue"></a>
 ## 6. Page d'un nouveau problème
+
+<a href="#top">Haut de la page</a>
 
 <a name="listofIssues"></a>
 ## 7. Page de la liste des problèmes
 
+<a href="#top">Haut de la page</a>
+
 <a name="detailsofIssue"></a>
 ## 8. Page d'un problème
+
+<a href="#top">Haut de la page</a>
 
 
