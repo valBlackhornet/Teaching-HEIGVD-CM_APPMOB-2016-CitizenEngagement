@@ -19,7 +19,7 @@ Ce répertoire permet de comprendre le fonctionnement général de cette applica
 
 Cette application permet aux utilisateurs de faires les choses suivantes:
 
-* [S'authentifier](#loginLogout)
+* [S'authentifier](#login)
 * [Voir les détails du profil utilisateur](#profil)
 * [Ajouter un nouveau problème](#newIssue):
   * Le problème doit avoir un type, une description
@@ -67,12 +67,12 @@ Une fois que nous avions terminés nos mockups, nous sommes passés à la réali
 
 
 
-<a name="loginLogout"></a>
+<a name="login"></a>
 ## 3. Page de connexion
 
 Pour pouvoir utiliser les fonctionnalités de l'application, l'utilisateur doit commencer par s'enregistrer ou se loguer par son nom et son prénom.
 
-![Login](setup/login.jpg)
+![Login](setup/login.JPG)
 
 
 
