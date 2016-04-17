@@ -5,7 +5,7 @@
 Ce répertoire permet de comprendre le fonctionnement général de cette application mobile.
 
 1. [Liste des fonctionnalités](#features)
-2. [Première étape: Les Mockups](#ui)
+2. [Conception de l'interface utilisateur](#ui)
 2. [Set up the application](#setup)
 3. [Set up the navigation structure](#structure)
 4. [Implémentation du login](#security)
