@@ -106,7 +106,7 @@ Sur cette page d'accueil, il y a des onglets en haut et en bas. En haut, de gauc
 
 Lorsque l'on veut créer un nouveau problème, il faut dans un premier temps donner une description du problème. L'adresse est complétée directement avec la position de l'utilisateur. S'il le désire, il peut éditer l'adresse du problème grâce à l'onglet "Edit address" qui le dirige sur une carte où il peut placer le marqueur à l'adresse qu'il veut. Revenu sur la page, il faut sélectionner le type du problème pour le catégoriser, et prendre une photo de celui-ci. C'est en cliquant sur "create" que le problème sera enregistré dans la base de donnée.
 
-![Nouvelle issue](setup/newIssue.JPG)![Autre adresse](setup/mapSearch.JPG)![Prise de la photo](setup/pictureIssue.JPG)
+![Nouvelle issue](setup/newIssue.JPG)![Autre adresse](setup/mapSearch.JPG)!
 
 <a href="#top">Haut de la page</a>
 
