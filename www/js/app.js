@@ -109,25 +109,27 @@ angular.module('citizen-engagement', ['ionic',
         }
       },
       resolve: {
-        issuesInRadius: function($http, apiUrl, AuthService){
-          return $http({
-              method: 'POST',
-              url: apiUrl + '/issues/search',
-              data: {
-                      "loc": {
-                        "$geoWithin": {
-                          "$centerSphere" : [
-                            [ 46.7833, 6.65 ],
-                            10
-                          ]
+        issuesInRadius: function($http, apiUrl, AuthService, Map){
+          return Map.pos.then(function (result) {
+              return $http({
+                method: 'POST',
+                url: apiUrl + '/issues/search',
+                data: {
+                        "loc": {
+                          "$geoWithin": {
+                            "$centerSphere" : [
+                              [ result.latitude, result.longitude ],
+                              10
+                            ]
+                          }
                         }
                       }
-                    }
-            }).success(function(issues) {
-              return issues;
-            }).error(function(error) {
-              console.log(error);
-            });
+              }).success(function(issues) {
+                console.log(issues);
+              }).error(function(error) {
+                console.log(error);
+              })
+            })
         }
       }
     })
